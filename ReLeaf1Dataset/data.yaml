@@ -1,0 +1,13 @@
+train: C:/Users/prapt/OneDrive/Desktop/Project/WasteSegAI/ReLeaf1Dataset/train/images
+val: C:/Users/prapt/OneDrive/Desktop/Project/WasteSegAI/ReLeaf1Dataset/valid/images
+test: C:/Users/prapt/OneDrive/Desktop/Project/WasteSegAI/ReLeaf1Dataset/test/images
+
+nc: 14
+names: ['Apple-Bio', 'Banana-Bio', 'CardBoard-Bio', 'Date-Bio', 'Eraser-NonBio', 'Leaf-Bio', 'Pen-NonBio', 'Pencil-Bio', 'Plastic-NonBio', 'Spectacles-NonBio', 'Steel-NonBio', 'Straw-NonBio', 'Tissue Paper-Bio', 'Wooden Spoon-Bio']
+
+roboflow:
+  workspace: prapti-siva-workspace
+  project: releaf1
+  version: 2
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/prapti-siva-workspace/releaf1/dataset/2
