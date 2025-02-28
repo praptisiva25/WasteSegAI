@@ -10,6 +10,24 @@ app = FastAPI()
 UPLOAD_DIR = Path("uploads")
 UPLOAD_DIR.mkdir(exist_ok=True)
 
+# Class ID to Class Name Mapping
+CLASS_NAMES = {
+    0: "Apple-Bio",
+    1: "Banana-Bio",
+    2: "CardBoard-Bio",
+    3: "Date-Bio",
+    4: "Eraser-NonBio",
+    5: "Leaf-Bio",
+    6: "Pen-NonBio",
+    7: "Pencil-Bio",
+    8: "Plastic-NonBio",
+    9: "Spectacles-NonBio",
+    10: "Steel-NonBio",
+    11: "Straw-NonBio",
+    12: "Tissue Paper-Bio",
+    13: "Wooden Spoon-Bio"
+}
+
 @app.get("/")
 def home():
     return {"message": "WasteSegAI FastAPI is running!"}
@@ -22,4 +40,12 @@ async def predict(file: UploadFile = File(...)):
         shutil.copyfileobj(file.file, buffer)
     
     results = predict_image(file_path)
-    return results
+
+    # Ensure results is a dictionary
+    results_dict = results.dict() if hasattr(results, "dict") else results
+
+    # Convert class_id to class_name
+    for detection in results_dict["detections"]:
+        detection["class_name"] = CLASS_NAMES.get(detection["class_id"], "Unknown")
+
+    return results_dict
