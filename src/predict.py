@@ -1,13 +1,13 @@
 from ultralytics import YOLO
 
-# Load the trained model
-model = YOLO("C:/Users/prapt/OneDrive/Desktop/Project/WasteSegAI/runs/detect/train/weights/best.pt")  # Path to your best model
 
-# Run inference on an image
-results = model.predict("test_image2.jpg", save=True, save_dir="runs/detect/custom_predict")
+model = YOLO("C:/Users/prapt/OneDrive/Desktop/Project/WasteSegAI/runs/detect/train/weights/best.pt")  
 
-# Print results (optional)
+
+results = model.predict("C:/Users/prapt/Favorites/projects/WasteSegAI/test_image3.jpg", save=True, save_dir="runs/detect/custom_predict")
+
+
 for r in results:
-    print(r.boxes)  # Bounding box coordinates
-    print(r.boxes.conf)  # Confidence scores
+    print(r.boxes)  
+    print(r.boxes.conf)  
  
